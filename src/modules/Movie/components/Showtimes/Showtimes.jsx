@@ -22,8 +22,8 @@ const Showtimes = ({ movieId }) => {
       navigate(`/purchase/${purchaseId}`);
     } else {
       await swal({
-        title: "Bạn vui lòng đẳng nhập trước khi đặt vé",
-
+        title: "Vui lòng đăng nhập",
+        text: "Trước khi đặt vé. Cảm ơn!",
         icon: "warning",
         buttons: [0, true],
         dangerMode: true,
