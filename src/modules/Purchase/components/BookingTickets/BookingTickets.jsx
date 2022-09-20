@@ -81,12 +81,12 @@ const BookingTickets = ({ tickets, handleBooking, listSeat }) => {
                 </button>
               </th>
               <th>
-                <button className="seat seatVip text-center">
+                <button className="seat seatBooked   text-center">
                   <AiOutlineCheck />
                 </button>
               </th>
               <th>
-                <button className="seat seatBooked text-center">
+                <button className="seat seatVip text-center">
                   <AiOutlineCheck />
                 </button>
               </th>
