@@ -64,7 +64,7 @@ const Tickets = () => {
   );
 };
 
-const PurChase = () => (
+const PurChase = ({ user }) => (
   <div className="purchase">
     <Container size="xl">
       <Tabs style={{ color: "#15aabf" }} defaultActiveKey="1">

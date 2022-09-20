@@ -5,16 +5,31 @@ import { Container, Button, Group, Text, Box } from "@mantine/core";
 import moment from "moment";
 import { useNavigate } from "react-router";
 import "./showtimes.scss";
+import { useSelector } from "react-redux";
+import CheckoutRoute from "routes/CheckoutRoute";
+import swal from "sweetalert";
 const Showtimes = ({ movieId }) => {
   const navigate = useNavigate();
   const { data: showtimes } = useRequest(() =>
     movieAPI.getMovieShowtime(movieId)
   );
+  const { user, isLoading } = useSelector((state) => state.auth);
   if (!showtimes) {
     return null;
   }
-  const gotoTicket = (purchaseId) => {
-    navigate(`/purchase/${purchaseId}`);
+  const gotoTicket = async (purchaseId) => {
+    if (user) {
+      navigate(`/purchase/${purchaseId}`);
+    } else {
+      await swal({
+        title: "Bạn vui lòng đẳng nhập trước khi đặt vé",
+
+        icon: "warning",
+        buttons: [0, true],
+        dangerMode: true,
+      });
+      navigate("/");
+    }
   };
   return (
     <Container id="Showtimes" size="lg">

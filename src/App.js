@@ -54,11 +54,12 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="movie/:movieId" element={<Movie />} />
-          <Route path="purchase/:id" element={<PurChase />} />
+
           <Route
             path="checkout/:checkoutId"
             element={<CheckoutRoute></CheckoutRoute>}
           />
+          <Route path="purchase/:id" element={<PurChase />} />
           <Route path="movies" element={<MovieList />} />
           <Route path="movies/add" element={<AddMovie />} />
         </Route>
