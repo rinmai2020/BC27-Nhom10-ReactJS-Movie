@@ -4,12 +4,27 @@ import { Tabs } from "antd";
 import moment from "moment";
 import { Box, Container, Group, Button, Text } from "@mantine/core";
 import "./Cinema.scss";
+import swal from "sweetalert";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 const Cinema = () => {
   const navigate = useNavigate();
   const { data: cinemas } = useRequest(() => movieAPI.getTheaterShowtime());
-  const gotoTicketCinema = (purchaseId) => {
-    navigate(`/purchase/${purchaseId}`);
+  const { user, isLoading } = useSelector((state) => state.auth);
+
+  const gotoTicketCinema = async (purchaseId) => {
+    if (user) {
+      navigate(`/purchase/${purchaseId}`);
+    } else {
+      await swal({
+        title: "Vui lòng đăng nhập",
+        text: "Trước khi đặt vé. Cảm ơn!",
+        icon: "warning",
+        buttons: [0, true],
+        dangerMode: true,
+      });
+      navigate("/login");
+    }
   };
   return (
     <Container size="lg" id="Cinema">

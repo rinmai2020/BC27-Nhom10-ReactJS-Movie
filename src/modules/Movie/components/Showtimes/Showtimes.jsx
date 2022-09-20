@@ -28,7 +28,7 @@ const Showtimes = ({ movieId }) => {
         buttons: [0, true],
         dangerMode: true,
       });
-      navigate("/");
+      navigate("/login");
     }
   };
   return (
